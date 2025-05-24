@@ -1,4 +1,6 @@
-torch
-numpy
-tqdm
-tokenizers
+torch>=2.0.0
+numpy>=1.21.0
+tqdm>=4.65.0
+tokenizers>=0.13.0
+typing_extensions>=4.0.0
+sympy>=1.12

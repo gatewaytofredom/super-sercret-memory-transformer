@@ -12,13 +12,32 @@ A PyTorch implementation of a Transformer model enhanced with a Neural Memory Mo
 
 ## Requirements
 
-- Python 3.7+
-- PyTorch
-- NumPy
-- tqdm
-- tokenizers
+- Python 3.8+
+- [uv](https://github.com/astral-sh/uv) (for package management)
 
-Install dependencies:
+## Installation
+
+### Using uv (Recommended)
+
+1. Install uv if you haven't already:
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+2. Clone the repository and install dependencies:
+```bash
+cd super-sercret-memory-transformer
+uv venv
+uv pip sync requirements.txt
+```
+
+Or install the project in development mode:
+```bash
+uv pip install -e .
+```
+
+### Using pip (Alternative)
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -29,7 +48,14 @@ pip install -r requirements.txt
 
 1. Place your text data in the `smalldata/` directory (sample educational texts are included)
 
-2. Run the training script:
+2. Activate the virtual environment (if using uv):
+```bash
+source .venv/bin/activate  # On Linux/macOS
+# or
+.venv\Scripts\activate  # On Windows
+```
+
+3. Run the training script:
 ```bash
 python train_model.py
 ```
@@ -90,7 +116,9 @@ super-sercret-memory-transformer/
 ├── neural_memory_transformer_model.py  # Model implementation
 ├── train_model.py                      # Training script
 ├── dataloader.py                       # Data loading and tokenization
-├── requirements.txt                    # Dependencies
+├── pyproject.toml                      # Project configuration and dependencies
+├── requirements.txt                    # Dependencies (for pip compatibility)
+├── README.md                           # This file
 ├── smalldata/                          # Sample training data
 │   ├── 100kmath.txt
 │   ├── A First Course in Linear Algebra Robert A. Beezer.txt
@@ -136,6 +164,40 @@ The training script includes:
 - Periodic checkpoint saving
 - Sample text generation during training
 - Memory statistics logging
+
+## Development
+
+### Setting up for Development
+
+If you want to contribute or modify the code, install with development dependencies:
+
+```bash
+uv pip install -e ".[dev]"
+```
+
+This includes:
+- `pytest` for testing
+- `black` for code formatting
+- `ruff` for linting
+- `mypy` for type checking
+- `ipython` for interactive development
+
+### Code Quality
+
+Format code with:
+```bash
+black .
+```
+
+Lint with:
+```bash
+ruff check .
+```
+
+Type check with:
+```bash
+mypy .
+```
 
 ## Citation
 
